@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>QCM Corrigé - Économie de la concurrence</title>
+    <style>
+        :root {
+            --bleu-fonce: #1a365d;
+            --bleu-principal: #2b6cb0;
+            --bleu-clair: #ebf4ff;
+            --bleu-survol: #bee3f8;
+            --vert-check: #2f855a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: white;
+            color: #1a202c;
+            line-height: 1.6;
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        /* En-tête du document */
+        .header {
+            background: linear-gradient(135deg, var(--bleu-fonce) 0%, var(--bleu-principal) 100%);
+            color: white;
+            padding: 35px 40px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(43, 108, 176, 0.15);
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 40px;
+            padding: 10px 25px;
+        }
+
+        .meta-info span {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        /* Règles du QCM */
+        .rules-box {
+            background: var(--bleu-clair);
+            border-left: 5px solid var(--bleu-principal);
+            padding: 20px 25px;
+            margin-bottom: 35px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            color: var(--bleu-fonce);
+        }
+
+        .rules-box strong {
+            color: var(--bleu-fonce);
+        }
+
+        /* Page séparateur */
+        .page-separator {
+            border: none;
+            border-top: 2px dashed #bdd3ee;
+            margin: 40px 0;
+            position: relative;
+            text-align: center;
+        }
+        .page-separator span {
+            background: white;
+            padding: 0 20px;
+            color: var(--bleu-principal);
+            font-weight: bold;
+            position: relative;
+            top: -12px;
+        }
+
+        /* Bloc question */
+        .question {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+            transition: all 0.2s;
+        }
+        .question:hover {
+            box-shadow: 0 8px 18px rgba(43, 108, 176, 0.1);
+            border-color: var(--bleu-principal);
+        }
+
+        .question .q-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--bleu-fonce);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .q-title .num {
+            background: var(--bleu-principal);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .option {
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            transition: background 0.2s;
+            background: #f7fafc;
+            border: 1px solid transparent;
+        }
+        .option.correct {
+            background: #e6f4ea;
+            border-color: #a3d9b1;
+            font-weight: 500;
+            color: #1a4731;
+        }
+        .option.correct .letter {
+            background: var(--vert-check);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        .option:not(.correct) .letter {
+            background: #cbd5e0;
+            color: #4a5568;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        .option .text {
+            flex: 1;
+        }
+        .check-icon {
+            color: var(--vert-check);
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        /* Page numbers */
+        .page-num {
+            text-align: right;
+            color: var(--bleu-principal);
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin: 20px 0 10px;
+            padding-right: 10px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 8px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: #718096;
+            font-size: 0.85rem;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- EN-TÊTE -->
+<div class="header">
+    <h1>Économie de la concurrence</h1>
+    <div class="subtitle">QCM Corrigé – Session 1<sup>ère</sup> Chance</div>
+    <div class="meta-info">
+        <span>📅 19 mai 2025</span>
+        <span>⏱️ Durée : 1 heure</span>
+        <span>👨‍🏫 M. Bertrand Corbi</span>
+        <span>📘 L1‑L2</span>
+    </div>
+</div>
+
+<!-- RÈGLES -->
+<div class="rules-box">
+    <strong>📌 Barème et consignes :</strong><br>
+    • Au moins une réponse est correcte par question.<br>
+    • Le point est attribué uniquement si <strong>toutes les réponses correctes, et seulement celles-ci</strong>, sont cochées.<br>
+    • Aucun point négatif.
+</div>
+
+<!-- CORRECTION (intégrale, organisée par pages) -->
+
+<div class="page-num">P. 1 / 11</div>
+
+<!-- Q1 -->
+<div class="question">
+    <div class="q-title"><span class="num">1</span> Les conditions de la concurrence pure et parfaite sont :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">L’atomicité</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">L’homogénéité des produits</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">La libre entrée et sortie du marché</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">d</span> <span class="text">La mobilité des facteurs de production</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q2 -->
+<div class="question">
+    <div class="q-title"><span class="num">2</span> Une entreprise est dite « price taker » lorsque :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Le prix du marché s’impose à elle</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Le prix fixé par une entreprise dominante s’impose à elle</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Elle ne dispose d’aucun pouvoir de marché</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Elle est en situation de monopole sur le marché</span></div>
+</div>
+
+<!-- Q3 -->
+<div class="question">
+    <div class="q-title"><span class="num">3</span> Le profit d’une entreprise :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Est égal à sa recette totale</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Est égal à la différence entre sa recette totale et son coût total</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">c</span> <span class="text">Est égal au produit du chiffre d’affaires réalisé et de ses coûts</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Aucune de ces réponses</span></div>
+</div>
+
+<!-- Q4 -->
+<div class="question">
+    <div class="q-title"><span class="num">4</span> Les coûts fixes :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Varient en fonction des quantités produites</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Varient en fonction des quantités vendues</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Restent les mêmes quelles que soient les quantités produites</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">d</span> <span class="text">Comprennent le loyer à payer pour l’utilisation des locaux de l’entreprise</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q5 -->
+<div class="question">
+    <div class="q-title"><span class="num">5</span> Les coûts variables :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Dépendent de la quantité produite</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Restent les mêmes quelle que soit la quantité produite</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Comprennent les dépenses d’électricité</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Sont toujours égaux au coût marginal</span></div>
+</div>
+
+<!-- Q6 -->
+<div class="question">
+    <div class="q-title"><span class="num">6</span> Le coût marginal :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Est un coût généralement peu significatif pour l’entreprise</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Correspond au coût de la dernière unité produite</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Permet à l’entreprise de déterminer si elle continue ou non de produire</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Est toujours égal au niveau des coûts variables</span></div>
+</div>
+
+<!-- Q7 -->
+<div class="question">
+    <div class="q-title"><span class="num">7</span> Le coût marginal :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Est très souvent calculé par les entreprises en pratique</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Est une notion controversée en économie de la concurrence</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Est nécessaire pour calculer le pouvoir de marché</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Aucune de ces réponses</span></div>
+</div>
+
+<div class="page-num">P. 2 / 11</div>
+
+<!-- Q8 -->
+<div class="question">
+    <div class="q-title"><span class="num">8</span> Une entreprise réalise du profit lorsque :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Le coût marginal est supérieur au prix</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Le coût marginal est inférieur au prix</span></div>
+    <div class="option"><span class="letter">c</span> <span class="text">Le coût marginal est égal au prix</span></div>
+    <div class="option correct"><span class="letter">d</span> <span class="text">Aucune de ces réponses</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q9 -->
+<div class="question">
+    <div class="q-title"><span class="num">9</span> En concurrence pure et parfaite :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Le prix est déterminé par un accord entre les entreprises</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Le prix est déterminé par une entreprise dominante</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Le prix est égal au niveau du coût marginal des entreprises</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Le prix est choisi par les consommateurs</span></div>
+</div>
+
+<!-- Q10 -->
+<div class="question">
+    <div class="q-title"><span class="num">10</span> Le pouvoir de marché :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Correspond au pouvoir qu’a une entreprise d’influer sur le prix du marché</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Est nul lorsque le marché est en situation de concurrence pure et parfaite</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Se caractérise par la possibilité qu’a une entreprise de fixer un prix supérieur à son niveau de coût marginal</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Aucune de ces réponses</span></div>
+</div>
+
+<!-- Q11 -->
+<div class="question">
+    <div class="q-title"><span class="num">11</span> Le pouvoir de marché :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Est mesuré par l’indice Richter</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Est mesuré par l’indice de Lerner</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">c</span> <span class="text">Est mesuré par l’indice de Schumpeter</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Est mesuré par l’indice d’Hayek</span></div>
+</div>
+
+<!-- Q12 -->
+<div class="question">
+    <div class="q-title"><span class="num">12</span> Si l’indice mesurant le pouvoir de marché est égal à 0,95 :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Le pouvoir de marché de l’entreprise est important</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Le pouvoir de marché de l’entreprise est faible</span></div>
+</div>
+
+<!-- Q13 -->
+<div class="question">
+    <div class="q-title"><span class="num">13</span> Le bien-être social :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Est égal au surplus des consommateurs</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Est égal à l’addition du profit des entreprises et du surplus des consommateurs</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">c</span> <span class="text">Est égal au profit des entreprises</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Est égal à la différence entre le profit des entreprises et le surplus des consommateurs</span></div>
+</div>
+
+<!-- Q14 -->
+<div class="question">
+    <div class="q-title"><span class="num">14</span> En concurrence pure et parfaite :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Le surplus des consommateurs est nul</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Le profit des entreprises est nul</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Le bien-être social est à son maximum</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Les entreprises réalisent des pertes</span></div>
+</div>
+
+<div class="page-num">P. 3 / 11</div>
+
+<!-- Q15 -->
+<div class="question">
+    <div class="q-title"><span class="num">15</span> La situation de monopole :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Se caractérise par la présence d’un seul offreur sur le marché</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Se caractérise par la présence d’un seul consommateur sur le marché</span></div>
+    <div class="option"><span class="letter">c</span> <span class="text">Est conforme au principe d’atomicité</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Est toujours une situation nuisible</span></div>
+</div>
+
+<!-- Q16 -->
+<div class="question">
+    <div class="q-title"><span class="num">16</span> Le monopoliste :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Est dit « price maker »</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Est dit « price taker »</span></div>
+</div>
+
+<!-- Q17 -->
+<div class="question">
+    <div class="q-title"><span class="num">17</span> En situation de monopole, le prix est établi :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Au niveau du coût marginal du monopoliste</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Au-dessus du coût marginal du monopoliste</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Au niveau de prix tel que le coût marginal du monopoliste égale sa recette marginale</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Au niveau de prix tel que le coût marginal du monopoliste égale son niveau de coût moyen</span></div>
+</div>
+
+<!-- Q18 -->
+<div class="question">
+    <div class="q-title"><span class="num">18</span> Lorsqu’une entreprise est en situation de monopole, l’indice mesurant son pouvoir de marché est égal à :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">0</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">0,5</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">1</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">2</span></div>
+</div>
+
+<!-- Q19 -->
+<div class="question">
+    <div class="q-title"><span class="num">19</span> Le pouvoir de fixation du prix du monopoliste :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Est illimité</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Dépend de l’élasticité-prix de la demande</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">c</span> <span class="text">Est limité par le niveau de coûts fixes du monopoliste</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Aucune de ces réponses</span></div>
+</div>
+
+<!-- Q20 -->
+<div class="question">
+    <div class="q-title"><span class="num">20</span> L’élasticité-prix de la demande :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Permet de mesurer comment évolue la demande lorsque le prix varie</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Permet de mesurer l’étendue du pouvoir de marché du monopoliste</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Varie selon les types de marchés</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Est nulle lorsque le marché est en situation de monopole</span></div>
+</div>
+
+<!-- Q21 -->
+<div class="question">
+    <div class="q-title"><span class="num">21</span> Si la demande baisse de 50% lorsque le prix d’un bien augmente de 25%, alors :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">L’élasticité-prix de la demande est égale à 2</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">L’élasticité-prix de la demande est égale 0,5</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">La demande est fortement élastique par rapport au prix</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">La demande est faiblement élastique par rapport au prix</span></div>
+</div>
+
+<div class="page-num">P. 4 / 11</div>
+
+<!-- Q22 -->
+<div class="question">
+    <div class="q-title"><span class="num">22</span> La demande est fortement élastique par rapport au prix :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Sur les marchés de biens de consommation courante</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Lorsqu’il existe un bien substituable</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">c</span> <span class="text">Lorsque le bien est indispensable pour le consommateur</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Aucune de ces réponses</span></div>
+</div>
+
+<!-- Q23 -->
+<div class="question">
+    <div class="q-title"><span class="num">23</span> En situation de monopole :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Le surplus des consommateurs augmente par rapport à la situation de concurrence pure et parfaite</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Le monopoliste réalise du profit</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">L’économie connaît une perte sèche</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Aucune de ces réponses</span></div>
+</div>
+
+<!-- Q24 -->
+<div class="question">
+    <div class="q-title"><span class="num">24</span> L’inefficience productive du monopoliste correspond :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">À la perte de surplus des consommateurs par rapport à la situation de concurrence pure et parfaite</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">À la gestion des coûts inefficace du monopoliste</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">c</span> <span class="text">À l’absence d’incitation à innover du monopoliste</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">À une situation de capitalisme de connivence</span></div>
+</div>
+
+<!-- Q25 -->
+<div class="question">
+    <div class="q-title"><span class="num">25</span> Selon Kenneth Arrow, une entreprise en situation de monopole n’a plus aucune incitation à innover :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Vrai</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Faux</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q26 -->
+<div class="question">
+    <div class="q-title"><span class="num">26</span> Les monopoles sont :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Toujours indésirables</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Parfois utiles à l’économie</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">c</span> <span class="text">Toujours utiles à l’économie</span></div>
+</div>
+
+<!-- Q27 -->
+<div class="question">
+    <div class="q-title"><span class="num">27</span> Un monopole de fait :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Est la même chose qu’un monopole naturel</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Est un monopole tolérable</span></div>
+    <div class="option"><span class="letter">c</span> <span class="text">Découle de l’inefficience de la concurrence pure et parfaite</span></div>
+    <div class="option correct"><span class="letter">d</span> <span class="text">Se manifeste lorsque le niveau de coûts fixes de l’activité est très important</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q28 -->
+<div class="question">
+    <div class="q-title"><span class="num">28</span> Selon Joseph Schumpeter, le monopole doit être toléré s’il est la conséquence d’une innovation :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Vrai</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Faux</span></div>
+</div>
+
+<!-- Q29 -->
+<div class="question">
+    <div class="q-title"><span class="num">29</span> L’oligopole :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Est une situation de concurrence entre deux offreurs</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Est une situation de concurrence entre plusieurs offreurs</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Est une situation intermédiaire entre le monopole et la concurrence pure et parfaite</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Est compatible avec une situation de concurrence pure et parfaite</span></div>
+</div>
+
+<div class="page-num">P. 5 / 11</div>
+
+<!-- Q30 -->
+<div class="question">
+    <div class="q-title"><span class="num">30</span> Le modèle du duopole de Bertrand :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Conceptualise une concurrence par les prix</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Conceptualise une concurrence par les coûts</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Repose sur la théorie des jeux</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">d</span> <span class="text">Estime que le prix du marché oligopolistique est égal au prix du marché en concurrence pure et parfaite</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q31 -->
+<div class="question">
+    <div class="q-title"><span class="num">31</span> Dans le modèle de l’oligopole de Cournot :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">L’entrée d’une entreprise sur le marché n’a aucun effet sur le prix</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">L’entrée d’une entreprise sur le marché conduit à une hausse du prix</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">L’entrée d’une entreprise sur le marché conduit à une baisse du prix</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">d</span> <span class="text">L’entrée d’une entreprise sur le marché conduit à une baisse du profit des entreprises</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q32 -->
+<div class="question">
+    <div class="q-title"><span class="num">32</span> Selon l’École d’Harvard, la structure du marché dépend notamment :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Du nombre d’entreprises présentes sur le marché</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">De la concentration du marché</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">De l’élasticité-prix de la demande</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">d</span> <span class="text">Du pouvoir de négociation des clients</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q33 -->
+<div class="question">
+    <div class="q-title"><span class="num">33</span> La concentration du marché :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Mesure la répartition des parts de marché</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Est mesurée par l’indice de Lerner</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Est mesurée par l’indice Hirschmann-Herfindhal</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Est mesurée par l’indice Hoffman-Laroche</span></div>
+</div>
+
+<!-- Q34 -->
+<div class="question">
+    <div class="q-title"><span class="num">34</span> Lorsque la concentration du marché tend vers 0 :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Le marché est en situation de monopole</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Le marché est en situation concurrentielle</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">c</span> <span class="text">C’est mathématiquement impossible</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Le marché est en situation d’oligopole</span></div>
+</div>
+
+<!-- Q35 -->
+<div class="question">
+    <div class="q-title"><span class="num">35</span> Selon l’École d’Harvard :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">La structure du marché détermine le comportement des entreprises</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Le comportement des entreprises détermine la structure du marché</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Le comportement des entreprises détermine les performances des entreprises</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Les performances des entreprises déterminent la structure du marché</span></div>
+</div>
+
+<!-- Q36 -->
+<div class="question">
+    <div class="q-title"><span class="num">36</span> Un marché en situation de monopole n’est pas forcément anti-concurrentiel :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Faux</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Vrai, si le marché est contestable</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Vrai, si les consommateurs ont un pouvoir de négociation important</span> <span class="check-icon">✓</span></div>
+</div>
+
+<div class="page-num">P. 6 / 11</div>
+
+<!-- Q37 -->
+<div class="question">
+    <div class="q-title"><span class="num">37</span> Selon la conception dynamique de la concurrence :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">La concurrence est un processus de sélection</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Le monopole doit être systématiquement combattu</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Le monopole peut être la conséquence logique de la concurrence</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">La concurrence dépend de la structure du marché</span></div>
+</div>
+
+<!-- Q38 -->
+<div class="question">
+    <div class="q-title"><span class="num">38</span> Parmi ces auteurs, lesquels défendent une conception dynamique de la concurrence ?</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Joe Bain</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Friedrich Hayek</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Joseph Schumpeter</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Louis Brandeis</span></div>
+</div>
+
+<!-- Q39 -->
+<div class="question">
+    <div class="q-title"><span class="num">39</span> Selon l’École de Chicago :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">La structure du marché détermine le comportement des entreprises</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Le comportement des entreprises détermine leurs performances</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Les performances des entreprises déterminent la structure du marché</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">La structure du marché détermine les performances des entreprises</span></div>
+</div>
+
+<!-- Q40 -->
+<div class="question">
+    <div class="q-title"><span class="num">40</span> Selon Joseph Schumpeter :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">L’innovation est au cœur du processus de destruction-créatrice</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Les monopoles s’opposent à l’innovation</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Le monopole est un état transitoire du marché</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Le monopole doit être systématiquement combattu par les autorités de la concurrence</span></div>
+</div>
+
+<!-- Q41 -->
+<div class="question">
+    <div class="q-title"><span class="num">41</span> L’augmentation du niveau de concurrence :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Conduit à une hausse des prix</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Conduit à une baisse des prix</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q42 -->
+<div class="question">
+    <div class="q-title"><span class="num">42</span> L’innovation d’un acteur sur le marché peut :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Conduire à la formation d’un monopole</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Parfois être dupliquée par les concurrents</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Conduire une entreprise à sortir du marché</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">d</span> <span class="text">Augmenter la productivité de cet acteur</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q43 -->
+<div class="question">
+    <div class="q-title"><span class="num">43</span> La concurrence :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Détruit nécessairement des emplois</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Peut détruire des emplois en l’absence de mobilité du facteur travail</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Peut créer des emplois à moyen terme</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Crée toujours des emplois</span></div>
+</div>
+
+<div class="page-num">P. 7 / 11</div>
+
+<!-- Q44 -->
+<div class="question">
+    <div class="q-title"><span class="num">44</span> L’ouverture à la concurrence internationale détruit des emplois dans l’économie :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Oui, dans tous les secteurs d’activité</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Oui, dans le secteur d’activité dans lequel l’économie n’est pas spécialisée</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Oui, mais la destruction des emplois peut être compensée par une hausse de l’emploi dans d’autres secteurs d’activité</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q45 -->
+<div class="question">
+    <div class="q-title"><span class="num">45</span> Dans le commerce international, une économie se spécialise dans l’activité dans laquelle elle est la plus efficace :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Vrai</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Faux</span></div>
+</div>
+
+<!-- Q46 -->
+<div class="question">
+    <div class="q-title"><span class="num">46</span> Selon le théorème de Stolper-Samuelson, l’ouverture à la concurrence conduit systématiquement à une baisse des salaires :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Vrai</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Faux</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q47 -->
+<div class="question">
+    <div class="q-title"><span class="num">47</span> Participent à la politique de la concurrence :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">La lutte contre les pratiques anticoncurrentielles</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Le contrôle des monopoles naturels</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">c</span> <span class="text">Le contrôle de la masse monétaire</span></div>
+    <div class="option correct"><span class="letter">d</span> <span class="text">Les mesures de renforcement de la mobilité du consommateur</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q48 -->
+<div class="question">
+    <div class="q-title"><span class="num">48</span> Selon l’École d’Harvard, la politique de la concurrence ne devrait se préoccuper que de la maximisation du bien-être du consommateur :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Vrai</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Faux</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q49 -->
+<div class="question">
+    <div class="q-title"><span class="num">49</span> La politique européenne de la concurrence :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Est largement inspirée de l’École de Chicago</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Est inspirée de l’ordolibéralisme</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Participe à la création du marché unique</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Est largement inspirée de l’École d’Harvard</span></div>
+</div>
+
+<!-- Q50 -->
+<div class="question">
+    <div class="q-title"><span class="num">50</span> Selon la pensée ordolibérale, l’État doit être extérieur au libre jeu du marché :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Vrai</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Faux</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q51 -->
+<div class="question">
+    <div class="q-title"><span class="num">51</span> L’économie numérique se caractérise par :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">La présence d’effets de réseau</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Des coûts fixes faibles</span></div>
+    <div class="option"><span class="letter">c</span> <span class="text">Un marché faiblement concentré</span></div>
+    <div class="option correct"><span class="letter">d</span> <span class="text">Un marché fortement concentré</span> <span class="check-icon">✓</span></div>
+</div>
+
+<div class="page-num">P. 8 / 11</div>
+
+<!-- Q52 -->
+<div class="question">
+    <div class="q-title"><span class="num">52</span> Les effets de réseau :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Peuvent être directs ou indirects</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Désigne le fait que l’utilité d’un service croît positivement avec le nombre d’utilisateurs</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">c</span> <span class="text">Sont propres à l’économie numérique</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Dépendent d’une connexion à internet</span></div>
+</div>
+
+<!-- Q53 -->
+<div class="question">
+    <div class="q-title"><span class="num">53</span> La théorie des marchés bifaces :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">A été développée par Jean Tirole</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Permet de comprendre l’importance des plateformes dans l’économie numérique</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">c</span> <span class="text">Se confond avec la théorie des marchés contestables</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">A été développée par Joseph Schumpeter</span></div>
+</div>
+
+<!-- Q54 -->
+<div class="question">
+    <div class="q-title"><span class="num">54</span> Lina Khan :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">est rattachée à l’École de Chicago</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">est l’auteure de « The Amazon Antitrust Paradox »</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Propose notamment de traiter Amazon comme un monopole naturel</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Appelle à la prudence dans le traitement anti-concurrentiel des GAFAM</span></div>
+</div>
+
+<!-- Q55 -->
+<div class="question">
+    <div class="q-title"><span class="num">55</span> Le droit européen de la concurrence :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Est mis en œuvre uniquement par la Commission européenne</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Est mis en œuvre uniquement par les Autorités nationales de la concurrence</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Est mis en œuvre conjointement par la Commission européenne et les Autorités nationales de la concurrence</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Est principalement issu de directives européennes</span></div>
+</div>
+
+<!-- Q56 -->
+<div class="question">
+    <div class="q-title"><span class="num">56</span> Les autorités de la concurrence sont dotées :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">D’un pouvoir normatif</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">D’un pouvoir d’enquête</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">D’un pouvoir de sanction</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q57 -->
+<div class="question">
+    <div class="q-title"><span class="num">57</span> L’autorité française de la concurrence peut être saisie :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Par le ministre de l’Économie</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Par le Premier ministre</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Par une association de défense des consommateurs</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">d</span> <span class="text">Par un consommateur se plaignant de pratiques anticoncurrentielles</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q58 -->
+<div class="question">
+    <div class="q-title"><span class="num">58</span> Les autorités de la concurrence peuvent :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Prononcer une amende correspondant à 15% du chiffre d’affaires le plus élevé jamais réalisé par l’entreprise</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Imposer le démantèlement d’une entreprise</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Imposer la dissolution d’une entreprise</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Prononcer une amende correspondant à 5% du chiffre d’affaires le plus élevé jamais réalisé par l’entreprise</span></div>
+</div>
+
+<div class="page-num">P. 9 / 11</div>
+
+<!-- Q59 -->
+<div class="question">
+    <div class="q-title"><span class="num">59</span> Lorsque l’Autorité française de la concurrence prononce une sanction, un recours est ouvert :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">Devant la Cour de justice de l’Union européenne</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Devant la Cour de cassation</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Devant la Cour d’appel de Paris</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Devant le Conseil d’État</span></div>
+</div>
+
+<!-- Q60 -->
+<div class="question">
+    <div class="q-title"><span class="num">60</span> La procédure de clémence :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Encourage à dénoncer une pratique anticoncurrentielle</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Est particulièrement efficace pour agir contre les cartels</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Implique d’accorder un avantage à l’entreprise qui dénonce une pratique anticoncurrentielle</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">A été récemment supprimée car contraire à la CEDH</span></div>
+</div>
+
+<!-- Q61 -->
+<div class="question">
+    <div class="q-title"><span class="num">61</span> La victime d’une pratique anticoncurrentielle :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Peut saisir le juge judiciaire en réparation du préjudice subi</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Peut saisir la Commission européenne</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Peut saisir l’Autorité française de la concurrence</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Ne peut obtenir la réparation de son préjudice subi individuellement</span></div>
+</div>
+
+<!-- Q62 -->
+<div class="question">
+    <div class="q-title"><span class="num">62</span> Le marché pertinent :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">N’est pas défini par le TFUE ou le Code de commerce</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Doit être déterminé préalablement à la poursuite d’un abus de position dominante</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">c</span> <span class="text">N’est utile que pour le contrôle a priori des concentrations</span></div>
+    <div class="option correct"><span class="letter">d</span> <span class="text">Est déterminé en recourant au calcul de l’élasticité-prix de la demande croisée</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q63 -->
+<div class="question">
+    <div class="q-title"><span class="num">63</span> Les abus d’éviction comprennent :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Les ventes liées</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Le dénigrement d’un concurrent</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Le ciseau tarifaire</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">d</span> <span class="text">Les prix prédateurs</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q64 -->
+<div class="question">
+    <div class="q-title"><span class="num">64</span> Pour caractériser une vente liée, les autorités de la concurrence doivent :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Établir une position dominante sur le marché du bien liant</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Établir une position dominante sur le marché du bien lié</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Démontrer un effet anticoncurrentiel</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">d</span> <span class="text">Vérifier qu’il n’y ait pas de justifications objectives à la vente liée</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q65 -->
+<div class="question">
+    <div class="q-title"><span class="num">65</span> La pratique des prix prédateurs :</div>
+    <div class="option"><span class="letter">a</span> <span class="text">est caractérisée lorsque le prix de vente est égal au coût marginal</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">est caractérisée lorsque le prix de vente est supérieur au coût marginal</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">est caractérisée lorsque le prix de vente est inférieur au coût marginal</span> <span class="check-icon">✓</span></div>
+</div>
+
+<div class="page-num">P. 10 / 11</div>
+
+<!-- Q66 -->
+<div class="question">
+    <div class="q-title"><span class="num">66</span> Une entreprise est verticalement intégrée :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Lorsqu’elle contrôle plusieurs étapes d’une chaîne de production</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Lorsqu’elle rachète ses concurrents pour éliminer la concurrence</span></div>
+    <div class="option"><span class="letter">c</span> <span class="text">Lorsqu’elle influence les décisions politiques par des pratiques de lobbying</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">Aucune de ces réponses</span></div>
+</div>
+
+<!-- Q67 -->
+<div class="question">
+    <div class="q-title"><span class="num">67</span> Le ciseau tarifaire :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Nécessite qu’une entreprise soit verticalement intégrée</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Se caractérise par un prix excessif sur le marché d’approvisionnement des concurrents</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">c</span> <span class="text">Suppose la démonstration d’une position dominante sur le marché en aval et sur le marché en amont</span></div>
+    <div class="option correct"><span class="letter">d</span> <span class="text">A un objet anticoncurrentiel</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q68 -->
+<div class="question">
+    <div class="q-title"><span class="num">68</span> La pratique des prix excessifs :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Est un abus d’exploitation</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">b</span> <span class="text">Est un abus d’éviction</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Consiste à proposer un prix jugé inéquitable</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">d</span> <span class="text">Implique la démonstration d’une disproportion entre le coût de production et le prix pratiqué</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q69 -->
+<div class="question">
+    <div class="q-title"><span class="num">69</span> Une entente peut résulter :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">D’un contrat</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">De la décision d’une association d’entreprises</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">D’actions concertées des entreprises</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">d</span> <span class="text">D’une simple volonté commune</span> <span class="check-icon">✓</span></div>
+</div>
+
+<!-- Q70 -->
+<div class="question">
+    <div class="q-title"><span class="num">70</span> Les cartels :</div>
+    <div class="option correct"><span class="letter">a</span> <span class="text">Correspondent à des accords exprès de partage d’un marché</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">b</span> <span class="text">Sont des réunions d’acteurs d’un secteur en vue de s’entendre sur les conditions du marché</span> <span class="check-icon">✓</span></div>
+    <div class="option correct"><span class="letter">c</span> <span class="text">Sont difficiles à déceler</span> <span class="check-icon">✓</span></div>
+    <div class="option"><span class="letter">d</span> <span class="text">N’opèrent qu’au Mexique</span></div>
+</div>
+
+<div class="page-num">P. 11 / 11</div>
+
+<div class="footer">
+    ✨ QCM corrigé intégralement – Économie de la concurrence – M. Bertrand Corbi – 2024-2025 ✨
+</div>
+
+</body>
+</html>
